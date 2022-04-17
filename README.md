@@ -1,63 +1,169 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Project Installation
+Create a new laravel project:
+```
+laravel new laravel-ecommerce
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+cd laravel-ecommerce
+ 
+php artisan migrate
+```
+## Adding [Laravel Breeze](https://laravel.com/docs/9.x/starter-kits#laravel-breeze)
+Laravel Breeze is a minimal, simple implementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Laravel Breeze's default view layer is made up of simple Blade templates styled with Tailwind CSS.
 
-## Laravel Sponsors
+Breeze provides a wonderful starting point for beginning a fresh Laravel application and is also great choice for projects that plan to take their Blade templates to the next level with Laravel Livewire.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Installation
+```
+composer require laravel/breeze --dev
+```
+After Composer has installed the Laravel Breeze package, you may run the breeze:install Artisan command.
+```
+php artisan breeze:install
 
-### Premium Partners
+npm install
+npm run dev
+php artisan migrate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Adding [Laravel Livewire](https://laravel-livewire.com/)
+### Installation
+Livewire is a full-stack framework for Laravel that makes building dynamic interfaces simple, without leaving the comfort of Laravel.
 
-## Contributing
+Include the PHP.
+```angular2svg
+composer require livewire/livewire
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Include the JavaScript (on every page that will be using Livewire).
+```angular2html
+...
+@livewireStyles
+</head>
+<body>
+    ...
 
-## Code of Conduct
+    @livewireScripts
+</body>
+</html>
+```
+You can alternatively use the tag syntax.
+```
+<livewire:styles />
+...
+<livewire:scripts />
+```
+That's it! That's all you need to start using Livewire. Everything else on this page is optional.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Other technologies used in this project:
+
+### 1. [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+This is a package to integrate  [PHP Debug Bar](http://phpdebugbar.com/)  with Laravel. It includes a ServiceProvider to register the debugbar and attach it to the output. You can publish assets and configure it through Laravel. It bootstraps some Collectors to work with Laravel and implements a couple custom DataCollectors, specific for Laravel. It is configured to display Redirects and (jQuery) Ajax Requests. (Shown in a dropdown) Read  [the documentation](http://phpdebugbar.com/docs/)  for more configuration options.
+
+[![Debugbar 3.3 Screenshot](https://user-images.githubusercontent.com/973269/79428890-196cc680-7fc7-11ea-8229-189f5eac9009.png)](https://user-images.githubusercontent.com/973269/79428890-196cc680-7fc7-11ea-8229-189f5eac9009.png)
+
+Note: Use the DebugBar only in development. It can slow the application down (because it has to gather data). So when experiencing slowness, try disabling some of the collectors.
+
+#### Installation
+
+Require this package with composer. It is recommended to only require the package for development.
+```
+composer require barryvdh/laravel-debugbar --dev
+```
+Laravel uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
+
+The Debugbar will be enabled when  `APP_DEBUG`  is  `true`.
+
+### 2. [staudenmeir/laravel-adjacency-list](https://github.com/staudenmeir/laravel-adjacency-list)
+This Laravel Eloquent extension provides recursive relationships using common table expressions (CTE).
+#### Installation
+```
+composer require staudenmeir/laravel-adjacency-list:"^1.0"
+```
+#### Compatibility
+-   MySQL 8.0+
+-   MariaDB 10.2+
+-   PostgreSQL 9.4+
+-   SQLite 3.8.3+
+-   SQL Server 2008+
+
+### 3. [cknow/laravel-money](https://github.com/cknow/laravel-money)
+### Laravel Money
+#### Installation
+
+Run the following command from you terminal:
+```
+composer require cknow/laravel-money
+```
+or add this to require section in your composer.json file:
+```
+"cknow/laravel-money": "~6.0"
+```
+then run  `composer update`
+
+#### Usage
+```
+use Cknow\Money\Money;
+
+echo Money::USD(500); // $5.00
+```
+#### Configuration
+
+The defaults are set in  `config/money.php`. Copy this file to your own config directory to modify the values. You can publish the config using this command:
+```
+php artisan vendor:publish --provider="Cknow\Money\MoneyServiceProvider"
+```
+This is the contents of the published file:
+```
+return [
+    /*
+ |--------------------------------------------------------------------------
+ | Laravel money
+ |--------------------------------------------------------------------------
+ */
+    'locale' => config('app.locale', 'en_US'),
+    'defaultCurrency' => config('app.currency', 'USD'),
+    'defaultFormatter' => null,
+    'currencies' => [
+        'iso' => ['RUB', 'USD', 'EUR'],  // 'all' to choose all ISOCurrencies
+        'bitcoin' => ['XBT'], // 'all' to choose all BitcoinCurrencies
+        'custom' => [
+            'MY1' => 2,
+            'MY2' => 3
+        ]
+    ]
+];
+```
+### 4.	[orangehill/iseed](https://github.com/orangehill/iseed)
+**Inverse seed generator (iSeed)**  is a Laravel package that provides a method to generate a new seed file based on data from the existing database table.
+### Installation
+
+#### Require with  [Composer](https://getcomposer.org/)
+```
+composer require orangehill/iseed
+```
+#### Artisan command options
+
+#### [](https://github.com/orangehill/iseed#table_name)[table_name]
+
+Mandatory parameter which defines which table/s will be used for seed creation. Use CSV notation for multiple tables. Seed file will be generated for each table.
+
+Examples:
+
+```
+php artisan iseed my_table
+```
+
+```
+php artisan iseed my_table,another_table
+```
+
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [ashraf.hafiz@yahoo.com](mailto:ashraf.hafiz@yahoo.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
